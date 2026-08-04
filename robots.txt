@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-# Baris Sitemap akan ditambahkan setelah URL website publik tersedia.
+Sitemap: https://rakhasaa.github.io/lapangan-bulutangkis/sitemap.xml

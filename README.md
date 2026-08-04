@@ -2,6 +2,12 @@
 
 Website profil sederhana untuk GOR MENTENG 6, lapangan bulutangkis di Palangka Raya, Kalimantan Tengah.
 
+## Website publik
+
+Website dapat dibuka melalui:
+
+https://rakhasaa.github.io/lapangan-bulutangkis/
+
 ## Informasi usaha
 
 - Nama: GOR MENTENG 6
@@ -34,3 +40,18 @@ lapangan-bulutangkis/
 ├── sitemap.xml
 └── README.md
 ```
+
+## Menjalankan website secara lokal
+
+1. Buka folder proyek melalui Visual Studio Code.
+2. Buka file `index.html`.
+3. Jalankan menggunakan ekstensi Live Server.
+4. Website akan terbuka melalui alamat lokal, misalnya `http://127.0.0.1:5500/`.
+
+## Publikasi
+
+Website diterbitkan menggunakan GitHub Pages dari branch `main` dan folder root repository.
+
+## Catatan
+
+Canonical URL, Open Graph URL, `robots.txt`, dan `sitemap.xml` menggunakan URL publik GitHub Pages.
