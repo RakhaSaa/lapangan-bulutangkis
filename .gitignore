@@ -1,0 +1,12 @@
+# File sementara Windows
+Thumbs.db
+Desktop.ini
+
+# File sementara macOS
+.DS_Store
+
+# Pengaturan editor lokal
+.vscode/
+
+# File log
+*.log

@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+# Baris Sitemap akan ditambahkan setelah URL website publik tersedia.
