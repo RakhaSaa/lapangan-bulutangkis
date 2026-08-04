@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://rakhasaa.github.io/lapangan-bulutangkis/sitemap.xml
+Sitemap: https://gormenteng6.biz.id/sitemap.xml

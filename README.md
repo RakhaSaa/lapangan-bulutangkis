@@ -6,7 +6,7 @@ Website profil sederhana untuk GOR MENTENG 6, lapangan bulutangkis di Palangka R
 
 Website dapat dibuka melalui:
 
-https://rakhasaa.github.io/lapangan-bulutangkis/
+https://gormenteng6.biz.id/
 
 ## Informasi usaha
 
