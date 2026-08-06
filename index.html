@@ -18,7 +18,7 @@
     />
 
     <meta name="robots" content="index, follow" />
-    <meta name="theme-color" content="#071722" />
+    <meta name="theme-color" content="#0f172a" />
 
     <link rel="icon" href="favicon.ico" sizes="any" />
 
@@ -35,7 +35,7 @@
 
     <meta
       property="og:description"
-      content="5 lapangan, harga Rp35.000 per jam, parkir luas, dan buka setiap hari sampai pukul 24.00. Cek jadwal melalui WhatsApp."
+      content="5 lapangan, tarif tetap Rp35.000 per jam, buka setiap hari sampai pukul 24.00, dan reservasi melalui WhatsApp."
     />
 
     <meta property="og:type" content="website" />
@@ -60,7 +60,6 @@
     <meta property="og:locale" content="id_ID" />
     <meta property="og:site_name" content="GOR MENTENG 6" />
 
-    <!-- Font -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
 
     <link
@@ -70,7 +69,7 @@
     />
 
     <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Montserrat:wght@600;700;800;900&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Manrope:wght@600;700;800&display=swap"
       rel="stylesheet"
     />
 
@@ -86,7 +85,7 @@
         "@id": "https://gormenteng6.biz.id/#business",
         "name": "GOR MENTENG 6",
         "alternateName": "GOR Menteng VI",
-        "description": "GOR keluarga yang menyediakan lima lapangan bulutangkis di Palangka Raya. Buka setiap hari pukul 09.00 sampai 24.00 dengan harga Rp35.000 per jam.",
+        "description": "GOR MENTENG 6 menyediakan lima lapangan bulutangkis di Palangka Raya. Buka setiap hari pukul 09.00 sampai 24.00 dengan tarif tetap Rp35.000 per jam.",
         "url": "https://gormenteng6.biz.id/",
         "image": "https://gormenteng6.biz.id/images/hero-lapangan-kosong.webp",
         "telephone": "+6282250763966",
@@ -132,14 +131,14 @@
       Lewati ke konten utama
     </a>
 
-    <!-- Header -->
-    <header class="site-header">
+<header class="site-header" id="beranda">
       <div class="container header-inner">
-        <a class="brand" href="#beranda">
-          <span class="brand-name">GOR MENTENG 6</span>
+        <a class="brand" href="#beranda" aria-label="GOR MENTENG 6">
+          <span class="brand-mark" aria-hidden="true">GM</span>
 
-          <span class="brand-tagline">
-            Badminton Palangka Raya
+          <span class="brand-copy">
+            <strong>GOR MENTENG 6</strong>
+            <small>Badminton Palangka Raya</small>
           </span>
         </a>
 
@@ -149,10 +148,9 @@
           type="button"
           aria-expanded="false"
           aria-controls="primary-navigation"
-          hidden
         >
-          <span aria-hidden="true">☰</span>
-          <span class="menu-text">Menu</span>
+          <span class="menu-icon" aria-hidden="true">☰</span>
+          <span>Menu</span>
         </button>
 
         <nav
@@ -160,20 +158,16 @@
           id="primary-navigation"
           aria-label="Navigasi utama"
         >
-          <ul class="nav-list">
-            <li><a href="#beranda">Beranda</a></li>
-            <li><a href="#tentang">Cerita GOR</a></li>
-            <li><a href="#fasilitas">Fasilitas</a></li>
-            <li><a href="#harga">Harga</a></li>
-            <li><a href="#galeri">Galeri</a></li>
-            <li><a href="#lokasi">Lokasi</a></li>
-          </ul>
+          <a href="#tentang">Tentang</a>
+          <a href="#fasilitas">Fasilitas</a>
+          <a href="#harga">Harga</a>
+          <a href="#galeri">Galeri</a>
+          <a href="#faq">FAQ</a>
+          <a href="#lokasi">Lokasi</a>
 
           <a
-            class="button button-small"
-            href="https://wa.me/6282250763966?text=Halo%20kak%2C%20saya%20melihat%20website%20GOR%20MENTENG%206.%20Saya%20ingin%20cek%20lapangan%20untuk%20tanggal%20%5Btanggal%5D%20pukul%20%5Bjam%5D.%20Apakah%20masih%20tersedia%3F"
-            target="_blank"
-            rel="noopener noreferrer"
+            class="button button-small button-primary"
+            href="#cek-jadwal"
           >
             Cek Jadwal
           </a>
@@ -182,504 +176,447 @@
     </header>
 
     <main id="main-content">
-      <!-- Hero -->
-      <section
-        class="hero"
-        id="beranda"
-        aria-labelledby="hero-title"
-      >
+      <section class="hero" aria-labelledby="hero-title">
+        <div class="hero-orb hero-orb-one"></div>
+        <div class="hero-orb hero-orb-two"></div>
+
         <div class="container hero-grid">
           <div class="hero-content">
             <p class="eyebrow">
-              GOR keluarga sejak 2020 · Palangka Raya
+              Lapangan badminton sejak 2020 · Palangka Raya
             </p>
 
             <h1 id="hero-title">
-              Main Badminton? Langsung Gas ke GOR Menteng 6.
+              Main badminton lebih praktis,
+              <span>pilih jadwal lalu reservasi.</span>
             </h1>
 
             <p class="hero-description">
-              Lima lapangan, parkir luas, dan buka setiap hari
-              sampai malam. Mau main pagi, sepulang kerja, atau
-              malam hari? Chat dulu untuk cek jadwal yang tersedia.
+              Tersedia lima lapangan dengan tarif tetap Rp35.000 per jam.
+              Buka setiap hari pukul 09.00–24.00 dan pembayaran dilakukan
+              langsung di lokasi.
             </p>
+
+            <div class="hero-actions">
+              <a
+                class="button button-primary button-large"
+                href="#cek-jadwal"
+              >
+                Cek Jadwal Sekarang
+              </a>
+
+              <a
+                class="button button-secondary button-large"
+                href="#galeri"
+              >
+                Lihat Suasana GOR
+              </a>
+            </div>
 
             <div
-              class="hero-stats"
-              aria-label="Informasi utama GOR MENTENG 6"
+              class="benefit-carousel"
+              data-benefit-carousel
+              aria-label="Keunggulan GOR MENTENG 6"
+              aria-roledescription="carousel"
             >
-              <div class="stat-item">
-                <strong>5</strong>
-                <span>Lapangan</span>
+              <div class="benefit-carousel__stage">
+                <button
+                  class="benefit-carousel__arrow benefit-carousel__arrow--prev"
+                  type="button"
+                  data-benefit-prev
+                  aria-label="Lihat keunggulan sebelumnya"
+                >
+                  <span aria-hidden="true">‹</span>
+                </button>
+
+                <div class="benefit-carousel__viewport" data-benefit-viewport>
+                  <div class="benefit-carousel__track" data-benefit-track>
+                    <article
+                      class="benefit-carousel__slide is-active"
+                      data-benefit-slide
+                      aria-hidden="false"
+                    >
+                      <span class="benefit-carousel__number" aria-hidden="true">01</span>
+                      <strong>5 Lapangan Tersedia</strong>
+                      <p>Lebih banyak pilihan untuk waktu bermain Anda.</p>
+                    </article>
+
+                    <article
+                      class="benefit-carousel__slide"
+                      data-benefit-slide
+                      aria-hidden="true"
+                    >
+                      <span class="benefit-carousel__number" aria-hidden="true">02</span>
+                      <strong>Rp35.000 per Jam</strong>
+                      <p>Nikmati fasilitas olahraga dengan harga terjangkau.</p>
+                    </article>
+
+                    <article
+                      class="benefit-carousel__slide"
+                      data-benefit-slide
+                      aria-hidden="true"
+                    >
+                      <span class="benefit-carousel__number" aria-hidden="true">03</span>
+                      <strong>Booking Tanpa DP</strong>
+                      <p>Reservasi sekarang, bayar langsung di lokasi.</p>
+                    </article>
+                  </div>
+                </div>
+
+                <button
+                  class="benefit-carousel__arrow benefit-carousel__arrow--next"
+                  type="button"
+                  data-benefit-next
+                  aria-label="Lihat keunggulan berikutnya"
+                >
+                  <span aria-hidden="true">›</span>
+                </button>
               </div>
 
-              <div class="stat-item">
-                <strong>Rp35.000</strong>
-                <span>Per jam</span>
+              <div class="benefit-carousel__dots" aria-label="Pilih keunggulan">
+                <button
+                  class="is-active"
+                  type="button"
+                  data-benefit-dot
+                  aria-label="Tampilkan 5 Lapangan Tersedia"
+                  aria-current="true"
+                ></button>
+                <button
+                  type="button"
+                  data-benefit-dot
+                  aria-label="Tampilkan Rp35.000 per Jam"
+                  aria-current="false"
+                ></button>
+                <button
+                  type="button"
+                  data-benefit-dot
+                  aria-label="Tampilkan Booking Tanpa DP"
+                  aria-current="false"
+                ></button>
               </div>
 
-              <div class="stat-item">
-                <strong>09.00–24.00</strong>
-                <span>Setiap hari</span>
-              </div>
-
-              <div class="stat-item">
-                <strong>Tanpa DP</strong>
-                <span>Bayar di lokasi</span>
-              </div>
+              <p class="visually-hidden" data-benefit-status aria-live="polite"></p>
             </div>
-
-            <div class="button-group">
-              <a
-                class="button button-primary"
-                href="https://wa.me/6282250763966?text=Halo%20kak%2C%20saya%20melihat%20website%20GOR%20MENTENG%206.%20Saya%20ingin%20cek%20lapangan%20untuk%20tanggal%20%5Btanggal%5D%20pukul%20%5Bjam%5D.%20Apakah%20masih%20tersedia%3F"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Cek Jadwal via WhatsApp
-              </a>
-
-              <a class="button button-secondary" href="#harga">
-                Lihat Harga &amp; Jam
-              </a>
-            </div>
-
-            <p class="hero-slogan">
-              Parkir luas, main puas, tinggal chat langsung gas!
-            </p>
           </div>
 
-          <div class="hero-media">
+          <div class="hero-visual">
+            <div class="hero-image-card">
+              <img
+                src="images/hero-lapangan-kosong.webp"
+                alt="Lapangan bulutangkis GOR MENTENG 6 di Palangka Raya"
+                width="1280"
+                height="720"
+                fetchpriority="high"
+                decoding="async"
+              />
+
+              <div class="hero-image-badge">
+                <span class="status-dot" aria-hidden="true"></span>
+                Buka setiap hari sampai pukul 24.00
+              </div>
+            </div>
+
+            <div class="floating-card floating-card-price">
+              <span>Harga tetap</span>
+              <strong>Rp35.000/jam</strong>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      <section
+        class="section booking-section"
+        id="cek-jadwal"
+        aria-labelledby="booking-title"
+      >
+        <div class="container booking-layout">
+          <div class="section-heading booking-copy">
+            <p class="eyebrow">Cek jadwal lebih praktis</p>
+
+            <h2 id="booking-title">
+              Pilih jadwal bermain, lanjutkan reservasi melalui WhatsApp.
+            </h2>
+
+            <p>
+              Tentukan tanggal, jam, dan durasi bermain. Detail reservasi
+              akan disiapkan untuk dikirim melalui WhatsApp.
+            </p>
+
+            <ul class="booking-benefits">
+              <li>Tidak perlu mengetik ulang detail jadwal.</li>
+              <li>Ketersediaan lapangan tetap dikonfirmasi oleh pengelola.</li>
+            </ul>
+          </div>
+
+          <form class="booking-form" id="booking-form" novalidate>
+            <div class="form-heading">
+              <span class="form-step">01</span>
+              <div>
+                <h3>Rencana bermain</h3>
+                <p>Lengkapi data berikut untuk mengecek jadwal.</p>
+              </div>
+            </div>
+
+            <div class="form-grid">
+              <label class="form-field">
+                <span>Tanggal bermain</span>
+                <input
+                  id="booking-date"
+                  name="bookingDate"
+                  type="date"
+                  required
+                />
+                <small>Pilih tanggal hari ini atau setelahnya.</small>
+              </label>
+
+              <label class="form-field">
+                <span>Jam mulai</span>
+                <select
+                  id="booking-time"
+                  name="bookingTime"
+                  required
+                >
+                  <option value="">Pilih jam</option>
+                  <option value="09.00">09.00</option>
+                  <option value="10.00">10.00</option>
+                  <option value="11.00">11.00</option>
+                  <option value="12.00">12.00</option>
+                  <option value="13.00">13.00</option>
+                  <option value="14.00">14.00</option>
+                  <option value="15.00">15.00</option>
+                  <option value="16.00">16.00</option>
+                  <option value="17.00">17.00</option>
+                  <option value="18.00">18.00</option>
+                  <option value="19.00">19.00</option>
+                  <option value="20.00">20.00</option>
+                  <option value="21.00">21.00</option>
+                  <option value="22.00">22.00</option>
+                  <option value="23.00">23.00</option>
+                </select>
+              </label>
+
+              <label class="form-field">
+                <span>Durasi bermain</span>
+                <select
+                  id="booking-duration"
+                  name="bookingDuration"
+                  required
+                >
+                  <option value="1">1 jam</option>
+                  <option value="2">2 jam</option>
+                  <option value="3">3 jam</option>
+                  <option value="4">4 jam</option>
+                </select>
+              </label>
+
+              <label class="form-field">
+                <span>Jumlah pemain</span>
+                <select
+                  id="booking-players"
+                  name="bookingPlayers"
+                >
+                  <option value="2">2 orang</option>
+                  <option value="4" selected>4 orang</option>
+                  <option value="6">6 orang</option>
+                  <option value="8">8 orang</option>
+                  <option value="Lebih dari 8">Lebih dari 8 orang</option>
+                </select>
+              </label>
+            </div>
+
+            <div class="booking-summary" aria-live="polite">
+              <div>
+                <span>Perkiraan biaya</span>
+                <strong id="estimated-price">Rp35.000</strong>
+              </div>
+
+              <small>
+                Harga akhir mengikuti durasi yang dikonfirmasi pengelola.
+              </small>
+            </div>
+
+            <p
+              class="form-message"
+              id="form-message"
+              role="alert"
+            ></p>
+
+            <button
+              class="button button-primary button-large button-full"
+              type="submit"
+            >
+              Cek Ketersediaan via WhatsApp
+            </button>
+
+            <p class="form-privacy">
+              Formulir ini tidak menyimpan data. Detail hanya digunakan
+              untuk menyusun pesan WhatsApp.
+            </p>
+          </form>
+        </div>
+      </section>
+
+      <section
+        class="section section-soft"
+        id="tentang"
+        aria-labelledby="about-title"
+      >
+        <div class="container about-grid">
+          <div class="about-media">
             <img
-              class="hero-image"
-              src="images/hero-lapangan-kosong.webp"
-              alt="Lapangan bulutangkis GOR MENTENG 6 di Palangka Raya dalam kondisi kosong"
-              width="1280"
-              height="720"
-              loading="eager"
-              fetchpriority="high"
+              src="images/suasana-bermain-gor-menteng-6.webp"
+              alt="Suasana pengunjung bermain di GOR MENTENG 6"
+              width="2184"
+              height="1228"
+              loading="lazy"
               decoding="async"
             />
+          </div>
 
-            <div class="hero-image-label">
-              <span aria-hidden="true">●</span>
-              Buka setiap hari
+          <div class="about-content">
+            <p class="eyebrow">Tentang GOR</p>
+
+            <h2 id="about-title">
+              Lapangan badminton untuk berbagai kebutuhan sejak 2020.
+            </h2>
+
+            <p>
+              GOR Menteng 6 berada di Jalan Menteng VI, Palangka Raya.
+              Tersedia untuk bermain santai, latihan rutin, kegiatan sekolah,
+              hingga pertandingan bersama komunitas.
+            </p>
+
+            <p>
+              Proses reservasi dilakukan melalui WhatsApp. Pilih jadwal,
+              tunggu konfirmasi, lalu bayar ketika datang bermain.
+            </p>
+
+            <div class="about-points">
+              <span>Buka 09.00–24.00</span>
+              <span>Sewa raket dan kok</span>
+              <span>Makanan dan minuman tersedia</span>
             </div>
           </div>
         </div>
       </section>
 
-      <!-- Informasi singkat -->
-      <section
-        class="quick-info"
-        aria-label="Informasi singkat GOR MENTENG 6"
-      >
-        <div class="container quick-info-grid">
-          <p>
-            <strong>Booking manual</strong>
-            melalui WhatsApp
-          </p>
-
-          <p>
-            <strong>Pembayaran</strong>
-            tunai, atau QRIS
-          </p>
-
-          <p>
-            <strong>Perlengkapan</strong>
-            sewa raket dan beli kok
-          </p>
-
-          <p>
-            <strong>Parkir</strong>
-            motor dan mobil
-          </p>
-        </div>
-      </section>
-
-      <!-- Tentang -->
-      <section
-        class="section story-section"
-        id="tentang"
-        aria-labelledby="tentang-title"
-      >
-        <div class="container story-grid">
-          <div class="section-heading">
-            <p class="eyebrow">Cerita GOR</p>
-
-            <h2 id="tentang-title">
-              Berawal dari Menteng VI, Berjalan Sejak 2020
-            </h2>
-          </div>
-
-          <div class="story-content">
-            <p class="story-lead">
-              Nama GOR MENTENG 6 diambil langsung dari lokasinya
-              di Jalan Menteng VI. Namanya dibuat sederhana supaya
-              mudah diingat dan orang langsung tahu ancer-ancernya.
-            </p>
-
-            <p>
-              Sejak 2020, GOR ini dijalankan langsung sebagai usaha
-              keluarga. Pengunjungnya beragam, mulai dari pekerja
-              yang bermain sepulang kerja, komunitas bulutangkis,
-              sampai keluarga yang datang bersama-sama.
-            </p>
-
-            <p>
-              Proses booking juga dibuat sederhana. Cukup kirim
-              tanggal dan jam melalui WhatsApp, lalu jadwal akan
-              diperiksa dan dikonfirmasi langsung.
-            </p>
-
-            <blockquote class="owner-reply">
-              <p>
-                “Halo kak, untuk tanggal segini jam segini masih
-                ada kok. Langsung datang aja ya, ditunggu di
-                lapangan!”
-              </p>
-
-              <cite>Contoh balasan dari pengelola</cite>
-            </blockquote>
-          </div>
-        </div>
-      </section>
-
-      <!-- Waktu bermain -->
-      <section
-        class="section section-alt"
-        id="waktu-main"
-        aria-labelledby="waktu-main-title"
-      >
-        <div class="container">
-          <div class="section-heading">
-            <p class="eyebrow">Pilih waktu main</p>
-
-            <h2 id="waktu-main-title">
-              Mau Lebih Santai atau Ikut Suasana Ramai?
-            </h2>
-
-            <p>
-              Ketersediaan dapat berubah setiap hari. Tanyakan
-              jadwal terlebih dahulu sebelum berangkat.
-            </p>
-          </div>
-
-          <div class="time-grid">
-            <article class="time-card time-card-calm">
-              <p class="time-label">Lebih longgar</p>
-
-              <h3>Pagi sampai siang</h3>
-
-              <p>
-                Biasanya lebih mudah mendapatkan lapangan sebelum
-                jam ramai dimulai. Cocok untuk pemain dengan jadwal
-                fleksibel atau yang ingin bermain lebih santai.
-              </p>
-
-              <p class="time-value">09.00–sore</p>
-            </article>
-
-            <article class="time-card time-card-busy">
-              <p class="time-label">Jam favorit</p>
-
-              <h3>Sore sampai malam</h3>
-
-              <p>
-                Ini waktu yang paling ramai hampir setiap hari.
-                Sebaiknya cek melalui WhatsApp agar tidak datang
-                ketika semua lapangan sudah digunakan.
-              </p>
-
-              <p class="time-value">Sore–24.00</p>
-            </article>
-          </div>
-        </div>
-      </section>
-
-      <!-- Fasilitas -->
       <section
         class="section"
         id="fasilitas"
-        aria-labelledby="fasilitas-title"
+        aria-labelledby="facilities-title"
       >
         <div class="container">
-          <div class="section-heading">
-            <p class="eyebrow">Yang tersedia di lokasi</p>
+          <div class="section-heading section-heading-centered">
+            <p class="eyebrow">Fasilitas</p>
 
-            <h2 id="fasilitas-title">
-              Datang Main, Perlengkapan dan Tempat Tunggu Sudah Ada
+            <h2 id="facilities-title">
+              Fasilitas yang mendukung kenyamanan bermain.
             </h2>
 
             <p>
-              Fasilitas berikut tersedia untuk pemain maupun
-              keluarga atau teman yang ikut menunggu.
+              Nikmati waktu bermain dengan fasilitas yang tersedia
+              untuk pemain dan pendamping.
             </p>
           </div>
 
           <div class="facility-grid">
-            <article class="facility-card">
-              <span class="facility-number">01</span>
-              <h3>5 lapangan</h3>
-              <p>
-                Beberapa permainan dapat berlangsung dalam waktu
-                yang sama.
-              </p>
+            <article class="feature-card">
+              <span class="feature-icon">01</span>
+              <h3>Lapangan Indoor</h3>
+              <p>Bermain lebih nyaman tanpa terganggu cuaca.</p>
             </article>
 
-            <article class="facility-card">
-              <span class="facility-number">02</span>
-              <h3>Lampu terang</h3>
-              <p>
-                Area permainan tetap terlihat jelas saat bermain
-                pada malam hari.
-              </p>
+            <article class="feature-card">
+              <span class="feature-icon">02</span>
+              <h3>Penerangan Lapangan</h3>
+              <p>Area bermain tetap terlihat jelas pada malam hari.</p>
             </article>
 
-            <article class="facility-card">
-              <span class="facility-number">03</span>
-              <h3>Parkir luas</h3>
-              <p>
-                Tersedia area parkir untuk motor dan mobil.
-              </p>
+            <article class="feature-card">
+              <span class="feature-icon">03</span>
+              <h3>Parkir Motor dan Mobil</h3>
+              <p>Tersedia area parkir untuk pengunjung.</p>
             </article>
 
-            <article class="facility-card">
-              <span class="facility-number">04</span>
-              <h3>Tempat tunggu</h3>
-              <p>
-                Tempat duduk tersedia untuk pemain, keluarga,
-                maupun pendamping.
-              </p>
+            <article class="feature-card">
+              <span class="feature-icon">04</span>
+              <h3>Area Tunggu</h3>
+              <p>Tempat menunggu tersedia untuk teman dan keluarga.</p>
             </article>
 
-            <article class="facility-card">
-              <span class="facility-number">05</span>
-              <h3>Toilet &amp; musholla</h3>
-              <p>
-                Fasilitas dasar tersedia dalam area GOR.
-              </p>
+            <article class="feature-card">
+              <span class="feature-icon">05</span>
+              <h3>Toilet dan Musala</h3>
+              <p>Fasilitas dasar tersedia di area GOR.</p>
             </article>
 
-            <article class="facility-card">
-              <span class="facility-number">06</span>
-              <h3>Snack &amp; minuman</h3>
-              <p>
-                Makanan ringan dan minuman dapat dibeli di lokasi.
-              </p>
-            </article>
-
-            <article class="facility-card">
-              <span class="facility-number">07</span>
-              <h3>Sewa raket</h3>
-              <p>
-                Tidak membawa raket? Tanyakan ketersediaan
-                penyewaan saat datang.
-              </p>
-            </article>
-
-            <article class="facility-card">
-              <span class="facility-number">08</span>
-              <h3>Kok tersedia</h3>
-              <p>
-                Kok bulutangkis dapat dibeli langsung di lokasi.
-              </p>
+            <article class="feature-card">
+              <span class="feature-icon">06</span>
+              <h3>Sewa Raket dan Kok</h3>
+              <p>Perlengkapan bermain dapat diperoleh di lokasi.</p>
             </article>
           </div>
         </div>
       </section>
 
-      <!-- Harga -->
       <section
         class="section price-section"
         id="harga"
-        aria-labelledby="harga-title"
+        aria-labelledby="price-title"
       >
-        <div class="container price-layout">
-          <div class="price-main">
-            <p class="eyebrow">Harga sewa</p>
+        <div class="container price-card">
+          <div class="price-copy">
+            <p class="eyebrow">Harga sederhana</p>
 
-            <h2 id="harga-title">
-              Satu Harga, Tidak Berubah Berdasarkan Jam
+            <h2 id="price-title">
+              Satu harga dari pagi sampai malam.
             </h2>
 
-            <p class="large-price">
-              <strong>Rp35.000</strong>
-              <span>per jam</span>
-            </p>
-
             <p>
-              Harga berlaku sama dari pagi sampai malam. Tidak
-              perlu membayar DP—pembayaran dilakukan ketika datang
-              bermain.
+              Tidak ada perbedaan harga berdasarkan jam bermain.
+              Pembayaran dilakukan ketika datang menggunakan tunai atau QRIS.
             </p>
+          </div>
 
+          <div class="price-value">
+            <span>Tarif tetap</span>
+            <strong>Rp35.000</strong>
+            <small>Per lapangan per jam</small>
+          </div>
+
+          <div class="price-actions">
             <a
-              class="button button-accent"
-              href="https://wa.me/6282250763966?text=Halo%20kak%2C%20saya%20melihat%20website%20GOR%20MENTENG%206.%20Saya%20ingin%20cek%20lapangan%20untuk%20tanggal%20%5Btanggal%5D%20pukul%20%5Bjam%5D.%20Apakah%20masih%20tersedia%3F"
-              target="_blank"
-              rel="noopener noreferrer"
+              class="button button-light button-large"
+              href="#cek-jadwal"
             >
-              Tanyakan Jadwal Kosong
+              Cek Jadwal
             </a>
-          </div>
 
-          <div class="price-details-panel">
-            <article>
-              <h3>Jam operasional</h3>
-              <p>
-                <strong>Setiap hari</strong><br />
-                09.00–24.00
-              </p>
-            </article>
-
-            <article>
-              <h3>Pembayaran</h3>
-
-              <ul class="payment-list">
-                <li>Tunai</li>
-                <li>QRIS</li>
-              </ul>
-            </article>
-
-            <article>
-              <h3>Uang muka</h3>
-              <p>
-                Tidak perlu DP. Bayar langsung ketika datang.
-              </p>
-            </article>
+            <span>Reservasi tanpa DP</span>
           </div>
         </div>
       </section>
 
-      <!-- Cara booking -->
       <section
-        class="section"
-        id="booking"
-        aria-labelledby="booking-title"
-      >
-        <div class="container">
-          <div class="section-heading">
-            <p class="eyebrow">Cara booking</p>
-
-            <h2 id="booking-title">
-              Booking Tidak Pakai Ribet
-            </h2>
-
-            <p>
-              Belum ada sistem booking otomatis. Semua jadwal
-              dikonfirmasi langsung melalui WhatsApp.
-            </p>
-          </div>
-
-          <ol class="booking-steps">
-            <li class="booking-step">
-              <span class="step-number">1</span>
-
-              <div>
-                <h3>Chat WhatsApp</h3>
-                <p>
-                  Sebutkan tanggal dan jam bermain yang Anda
-                  inginkan.
-                </p>
-              </div>
-            </li>
-
-            <li class="booking-step">
-              <span class="step-number">2</span>
-
-              <div>
-                <h3>Tunggu konfirmasi</h3>
-                <p>
-                  Jadwal diperiksa untuk memastikan lapangan masih
-                  tersedia.
-                </p>
-              </div>
-            </li>
-
-            <li class="booking-step">
-              <span class="step-number">3</span>
-
-              <div>
-                <h3>Datang dan main</h3>
-                <p>
-                  Tidak perlu DP. Pembayaran dilakukan saat datang
-                  menggunakan tunai, atau QRIS.
-                </p>
-              </div>
-            </li>
-          </ol>
-        </div>
-      </section>
-
-      <!-- Aturan dan catatan -->
-      <section
-        class="section section-alt"
-        aria-labelledby="aturan-title"
-      >
-        <div class="container notes-grid">
-          <article class="rules-card">
-            <p class="eyebrow">Aturan sederhana</p>
-
-            <h2 id="aturan-title">
-              Biar Semua Bisa Main dengan Nyaman
-            </h2>
-
-            <ul class="rules-list">
-              <li>Dilarang merokok di area lapangan.</li>
-              <li>Jaga kebersihan bersama.</li>
-              <li>Usahakan datang tepat waktu.</li>
-              <li>
-                Gunakan lapangan sesuai jadwal yang dikonfirmasi.
-              </li>
-            </ul>
-          </article>
-
-          <aside
-            class="honest-note"
-            aria-labelledby="catatan-title"
-          >
-            <p class="eyebrow">Catatan jujur</p>
-
-            <h2 id="catatan-title">
-              Yang Perlu Diketahui Sebelum Datang
-            </h2>
-
-            <p>
-              GOR menggunakan sirkulasi udara alami dan belum
-              dilengkapi AC. Saat cuaca panas atau kondisi sangat
-              ramai, suhu di dalam area dapat terasa lebih hangat.
-            </p>
-
-            <p>
-              Booking masih dilakukan manual melalui WhatsApp.
-              Belum tersedia pemesanan otomatis dari website.
-            </p>
-          </aside>
-        </div>
-      </section>
-
-      <!-- Galeri -->
-      <section
-        class="section gallery-section"
+        class="section section-soft"
         id="galeri"
-        aria-labelledby="galeri-title"
+        aria-labelledby="gallery-title"
       >
         <div class="container">
-          <div class="section-heading">
+          <div class="section-heading section-heading-centered">
             <p class="eyebrow">Galeri</p>
 
-            <h2 id="galeri-title">
-              Lapangan Kosong atau Suasana Ramai, Pilih Jam Mainmu
+            <h2 id="gallery-title">
+              Lihat kondisi lapangan sebelum datang bermain.
             </h2>
           </div>
 
           <div class="gallery-grid">
-            <figure class="gallery-item">
+            <figure class="gallery-card gallery-card-large">
               <img
-                class="gallery-image"
                 src="images/hero-lapangan-kosong.webp"
-                alt="Lapangan bulutangkis GOR MENTENG 6 di Palangka Raya dalam kondisi kosong"
+                alt="Lapangan kosong GOR MENTENG 6"
                 width="1280"
                 height="720"
                 loading="lazy"
@@ -687,15 +624,14 @@
               />
 
               <figcaption>
-                Kondisi lapangan ketika belum memasuki jam ramai.
+                Kondisi lapangan di luar jam ramai.
               </figcaption>
             </figure>
 
-            <figure class="gallery-item">
+            <figure class="gallery-card">
               <img
-                class="gallery-image"
                 src="images/suasana-bermain-gor-menteng-6.webp"
-                alt="Suasana pengunjung bermain bulutangkis di GOR MENTENG 6 Palangka Raya"
+                alt="Suasana ramai bermain di GOR MENTENG 6"
                 width="2184"
                 height="1228"
                 loading="lazy"
@@ -703,228 +639,221 @@
               />
 
               <figcaption>
-                Suasana beberapa lapangan yang digunakan secara
-                bersamaan.
+                Suasana saat beberapa lapangan digunakan.
               </figcaption>
             </figure>
           </div>
-                    <!-- Ajakan berbagi foto pengunjung -->
-          <aside
-            class="community-gallery-card"
-            aria-labelledby="community-gallery-title"
-          >
-            <div class="community-gallery-content">
-              <p class="eyebrow">Galeri Komunitas</p>
-
-              <h3 id="community-gallery-title">
-                Punya Momen Seru di GOR MENTENG 6?
-              </h3>
-
-              <p>
-                Main bareng teman, komunitas, atau keluarga?
-                Kirim foto landscape terbaikmu dan ceritakan
-                sedikit keseruannya. Foto terpilih bisa kami
-                tampilkan di galeri website atau Instagram
-                sebagai bagian dari cerita para pemain di
-                GOR MENTENG 6.
-              </p>
-            </div>
-
-            <div class="community-gallery-action">
-              <a
-                class="button button-accent button-large"
-                href="https://wa.me/6282250763966?text=Halo%20kak%2C%20saya%20ingin%20berbagi%20foto%20momen%20bermain%20di%20GOR%20MENTENG%206%20untuk%20dipertimbangkan%20tampil%20di%20galeri%20%F0%9F%93%B8%0A%0ANama%2Fpanggilan%3A%0ATanggal%20bermain%3A%0ANama%20tim%2Fkomunitas%20%28opsional%29%3A%0ACerita%20singkat%20tentang%20momennya%3A%0A%0ASaya%20akan%20mengirimkan%20foto%20landscape%20setelah%20pesan%20ini.%0A%0ASaya%20memastikan%20orang-orang%20yang%20terlihat%20di%20dalam%20foto%20sudah%20memberikan%20izin%2C%20dan%20saya%20mengizinkan%20GOR%20MENTENG%206%20menampilkan%20foto%20terpilih%20di%20website%20dan%2Fatau%20Instagram."
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                📸 Kirim Momen via WhatsApp
-              </a>
-
-              <p class="community-gallery-note">
-                Foto akan diperiksa terlebih dahulu sebelum
-                ditampilkan. Pastikan orang yang terlihat dalam
-                foto sudah memberikan izin.
-              </p>
-            </div>
-          </aside>
         </div>
       </section>
 
-      <!-- Lokasi -->
+      <section
+        class="section"
+        id="faq"
+        aria-labelledby="faq-title"
+      >
+        <div class="container faq-layout">
+          <div class="section-heading faq-heading">
+            <p class="eyebrow">Pertanyaan umum</p>
+
+            <h2 id="faq-title">
+              Hal yang sering ditanyakan sebelum bermain.
+            </h2>
+
+            <p>
+              Ketersediaan lapangan dapat berubah. Lakukan konfirmasi
+              melalui WhatsApp sebelum datang bermain.
+            </p>
+          </div>
+
+          <div class="faq-list">
+            <details open>
+              <summary>Apakah harus membayar DP?</summary>
+              <p>
+                Tidak. Pembayaran dilakukan saat datang bermain menggunakan
+                tunai atau QRIS.
+              </p>
+            </details>
+
+            <details>
+              <summary>Bagaimana cara mengecek ketersediaan lapangan?</summary>
+              <p>
+                Pilih tanggal dan jam bermain melalui formulir, lalu kirim
+                permintaan melalui WhatsApp. Pengelola akan mengonfirmasi
+                ketersediaan lapangan.
+              </p>
+            </details>
+
+            <details>
+              <summary>Apakah bisa langsung datang tanpa reservasi?</summary>
+              <p>
+                Bisa, tetapi ketersediaan lapangan tidak selalu terjamin.
+                Sebaiknya cek jadwal melalui WhatsApp sebelum datang.
+              </p>
+            </details>
+
+            <details>
+              <summary>Apakah jadwal bisa diubah atau dibatalkan?</summary>
+              <p>
+                Perubahan atau pembatalan jadwal dapat disampaikan melalui
+                WhatsApp. Sebaiknya informasikan kepada pengelola secepatnya.
+              </p>
+            </details>
+
+            <details>
+              <summary>Apakah tersedia penyewaan raket dan kok?</summary>
+              <p>
+                Ya, tersedia penyewaan raket serta pembelian kok di lokasi.
+                Tanyakan ketersediaannya saat melakukan reservasi.
+              </p>
+            </details>
+
+            <details>
+              <summary>Kapan waktu yang biasanya lebih ramai?</summary>
+              <p>
+                Sore hingga malam biasanya lebih ramai. Pagi sampai siang
+                cenderung memiliki lebih banyak pilihan jadwal.
+              </p>
+            </details>
+
+            <details>
+              <summary>Apakah lapangan menggunakan AC?</summary>
+              <p>
+                Belum. Area GOR menggunakan sirkulasi udara alami.
+              </p>
+            </details>
+          </div>
+        </div>
+      </section>
+
       <section
         class="section location-section"
         id="lokasi"
-        aria-labelledby="lokasi-title"
+        aria-labelledby="location-title"
       >
-        <div class="container">
-          <div class="section-heading">
+        <div class="container location-grid">
+          <div class="location-copy">
             <p class="eyebrow">Lokasi</p>
 
-            <h2 id="lokasi-title">
-              GOR di Jalan Menteng VI
+            <h2 id="location-title">
+              Mudah ditemukan di Jalan Menteng VI.
             </h2>
 
-            <p>
-              Lokasi dapat dibuka langsung melalui Google Maps.
-              Area parkir tersedia untuk motor dan mobil.
-            </p>
+            <address>
+              <strong>GOR MENTENG 6</strong><br />
+              QW67+PM2, Jl. Menteng VI, Menteng<br />
+              Jekan Raya, Palangka Raya<br />
+              Kalimantan Tengah 74874
+            </address>
+
+            <div class="location-actions">
+              <a
+                class="button button-primary"
+                href="https://maps.app.goo.gl/wVYVJ3f2RxGthi3J8"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Buka Google Maps
+              </a>
+
+              <a
+                class="button button-secondary"
+                href="https://wa.me/6282250763966?text=Halo%20kak%2C%20saya%20ingin%20menanyakan%20petunjuk%20menuju%20GOR%20MENTENG%206."
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Tanya Rute via WhatsApp
+              </a>
+            </div>
           </div>
 
-          <div class="location-grid">
-            <article class="location-card">
-              <h3>Alamat GOR MENTENG 6</h3>
-
-              <address>
-                <strong>Plus Code: QW67+PM2</strong><br />
-                Jl. Menteng VI, Kelurahan Menteng<br />
-                Kecamatan Jekan Raya<br />
-                Kota Palangka Raya<br />
-                Kalimantan Tengah 74874
-              </address>
-
-              <div class="location-actions">
-                <a
-                  class="button button-primary"
-                  href="https://maps.app.goo.gl/wVYVJ3f2RxGthi3J8"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  Buka di Google Maps
-                </a>
-
-                <a
-                  class="button button-secondary"
-                  href="https://wa.me/6282250763966?text=Halo%20kak%2C%20saya%20ingin%20menanyakan%20petunjuk%20menuju%20GOR%20MENTENG%206."
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  Tanya Petunjuk
-                </a>
-              </div>
-
-              <div class="location-points">
-                <p>
-                  <strong>Parkir:</strong>
-                  motor dan mobil
-                </p>
-
-                <p>
-                  <strong>Kawasan:</strong>
-                  Menteng, Jekan Raya
-                </p>
-              </div>
-            </article>
-
-            <div class="map-wrapper">
-              <iframe
-                src="https://www.google.com/maps?q=QW67%2BPM2%2C%20Palangka%20Raya&output=embed"
-                title="Peta lokasi GOR MENTENG 6 di Palangka Raya"
-                width="600"
-                height="450"
-                loading="lazy"
-                allowfullscreen
-                referrerpolicy="no-referrer-when-downgrade"
-              ></iframe>
-            </div>
+          <div class="map-card">
+            <iframe
+              src="https://www.google.com/maps?q=QW67%2BPM2%2C%20Palangka%20Raya&output=embed"
+              title="Peta lokasi GOR MENTENG 6"
+              width="600"
+              height="450"
+              loading="lazy"
+              allowfullscreen
+              referrerpolicy="no-referrer-when-downgrade"
+            ></iframe>
           </div>
         </div>
       </section>
 
-      <!-- Kontak -->
-      <section
-        class="section contact-section"
-        id="kontak"
-        aria-labelledby="kontak-title"
-      >
-        <div class="container contact-cta">
+      <section class="section final-cta">
+        <div class="container final-cta-card">
           <div>
-            <p class="eyebrow">Sudah tentukan jam main?</p>
-
-            <h2 id="kontak-title">
-              Kirim Tanggal dan Jam, Jadwal Langsung Dicek
-            </h2>
-
+            <p class="eyebrow">Sudah tahu kapan mau main?</p>
+            <h2>Kirim rencana jadwal dan tunggu konfirmasi.</h2>
             <p>
-              Yuk main bareng di GOR Menteng 6—parkir luas,
-              main puas, tinggal chat langsung gas!
+              Parkir luas, main puas, tinggal chat langsung gas.
             </p>
           </div>
 
-          <div class="contact-action">
-            <a
-              class="button button-accent button-large"
-              href="https://wa.me/6282250763966?text=Halo%20kak%2C%20saya%20melihat%20website%20GOR%20MENTENG%206.%20Saya%20ingin%20cek%20lapangan%20untuk%20tanggal%20%5Btanggal%5D%20pukul%20%5Bjam%5D.%20Apakah%20masih%20tersedia%3F"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Chat GOR MENTENG 6
-            </a>
-
-            <p class="contact-number">
-              WhatsApp:
-              <a href="tel:+6282250763966">
-                +62 822-5076-3966
-              </a>
-            </p>
-          </div>
+          <a
+            class="button button-light button-large"
+            href="#cek-jadwal"
+          >
+            Isi Rencana Bermain
+          </a>
         </div>
       </section>
     </main>
 
-    <!-- Footer -->
     <footer class="site-footer">
       <div class="container footer-grid">
-        <div class="footer-about">
-          <p class="footer-brand">GOR MENTENG 6</p>
+        <div>
+          <a class="brand footer-brand" href="#beranda">
+            <span class="brand-mark" aria-hidden="true">GM</span>
 
-          <p>
-            GOR keluarga sejak 2020 di Jalan Menteng VI,
+            <span class="brand-copy">
+              <strong>GOR MENTENG 6</strong>
+              <small>Badminton Palangka Raya</small>
+            </span>
+          </a>
+
+          <p class="footer-description">
+            Lapangan badminton sejak 2020 di Jalan Menteng VI,
             Palangka Raya.
           </p>
         </div>
 
-        <nav aria-label="Navigasi footer">
-          <ul class="footer-nav">
-            <li><a href="#beranda">Beranda</a></li>
-            <li><a href="#tentang">Cerita GOR</a></li>
-            <li><a href="#fasilitas">Fasilitas</a></li>
-            <li><a href="#harga">Harga</a></li>
-            <li><a href="#galeri">Galeri</a></li>
-            <li><a href="#lokasi">Lokasi</a></li>
-          </ul>
-        </nav>
+        <div>
+          <h3>Menu</h3>
+          <a href="#tentang">Tentang</a>
+          <a href="#fasilitas">Fasilitas</a>
+          <a href="#harga">Harga</a>
+          <a href="#galeri">Galeri</a>
+        </div>
 
-        <div class="footer-contact">
-          <p>
-            <a href="tel:+6282250763966">
-              +62 822-5076-3966
-            </a>
-          </p>
-
-          <p>
-            <a
-              href="https://www.instagram.com/gormenteng6/"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              @gormenteng6
-            </a>
-          </p>
-
-          <p>
-            Setiap hari<br />
-            09.00–24.00
-          </p>
+        <div>
+          <h3>Kontak</h3>
+          <a href="tel:+6282250763966">+62 822-5076-3966</a>
+          <a
+            href="https://www.instagram.com/gormenteng6/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            @gormenteng6
+          </a>
+          <span>Setiap hari, 09.00–24.00</span>
         </div>
       </div>
 
       <div class="container footer-bottom">
         <p>
-          &copy;
-          <span id="current-year">2026</span>
+          &copy; <span id="current-year">2026</span>
           GOR MENTENG 6.
         </p>
       </div>
     </footer>
+
+    <a
+      class="mobile-sticky-cta"
+      href="#cek-jadwal"
+      aria-label="Cek jadwal bermain"
+    >
+      Cek Jadwal
+    </a>
   </body>
 </html>
