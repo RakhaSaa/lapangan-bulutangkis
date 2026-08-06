@@ -221,3 +221,178 @@ function updateCurrentYear() {
     elements.currentYear.textContent = String(new Date().getFullYear());
   }
 }
+
+/* ==========================================================
+   CAROUSEL KEUNGGULAN
+   - Berganti otomatis setiap 4,5 detik pada layar HP
+   - Dapat dikontrol dengan tombol panah dan indikator
+   - Pada desktop, ketiga kartu tampil bersamaan
+   ========================================================== */
+
+(() => {
+  document.documentElement.classList.add("js-enabled");
+
+  const slider = document.querySelector("[data-benefit-slider]");
+
+  if (!slider) {
+    return;
+  }
+
+  const track = slider.querySelector("[data-benefit-track]");
+  const slides = Array.from(
+    slider.querySelectorAll("[data-benefit-slide]")
+  );
+  const dots = Array.from(
+    slider.querySelectorAll("[data-benefit-dot]")
+  );
+  const previousButton = slider.querySelector("[data-benefit-prev]");
+  const nextButton = slider.querySelector("[data-benefit-next]");
+
+  if (
+    !track ||
+    slides.length === 0 ||
+    dots.length !== slides.length
+  ) {
+    return;
+  }
+
+  const mobileScreen = window.matchMedia("(max-width: 47.99rem)");
+  const reducedMotion = window.matchMedia(
+    "(prefers-reduced-motion: reduce)"
+  );
+
+  let currentSlide = 0;
+  let autoSlideTimer = null;
+
+  /**
+   * Menghentikan perpindahan otomatis.
+   */
+  const stopAutoSlide = () => {
+    if (autoSlideTimer !== null) {
+      window.clearInterval(autoSlideTimer);
+      autoSlideTimer = null;
+    }
+  };
+
+  /**
+   * Memulai perpindahan otomatis hanya pada layar HP.
+   */
+  const startAutoSlide = () => {
+    stopAutoSlide();
+
+    if (
+      !mobileScreen.matches ||
+      reducedMotion.matches ||
+      slider.matches(":hover") ||
+      slider.contains(document.activeElement) ||
+      document.hidden
+    ) {
+      return;
+    }
+
+    autoSlideTimer = window.setInterval(() => {
+      showSlide(currentSlide + 1, false);
+    }, 4500);
+  };
+
+  /**
+   * Menampilkan slide berdasarkan nomor urutan.
+   *
+   * @param {number} requestedSlide Nomor slide yang ingin ditampilkan.
+   * @param {boolean} restartTimer Apakah timer perlu dimulai ulang.
+   */
+  const showSlide = (requestedSlide, restartTimer = true) => {
+    currentSlide =
+      (requestedSlide + slides.length) % slides.length;
+
+    if (mobileScreen.matches) {
+      track.style.transform =
+        `translateX(-${currentSlide * 100}%)`;
+    } else {
+      track.style.transform = "";
+    }
+
+    slides.forEach((slide, index) => {
+      const isCurrentSlide = index === currentSlide;
+
+      slide.classList.toggle("is-active", isCurrentSlide);
+
+      slide.setAttribute(
+        "aria-hidden",
+        mobileScreen.matches && !isCurrentSlide
+          ? "true"
+          : "false"
+      );
+    });
+
+    dots.forEach((dot, index) => {
+      const isCurrentDot = index === currentSlide;
+
+      dot.classList.toggle("is-active", isCurrentDot);
+
+      dot.setAttribute(
+        "aria-current",
+        isCurrentDot ? "true" : "false"
+      );
+    });
+
+    if (restartTimer) {
+      startAutoSlide();
+    }
+  };
+
+  if (previousButton) {
+    previousButton.addEventListener("click", () => {
+      showSlide(currentSlide - 1);
+    });
+  }
+
+  if (nextButton) {
+    nextButton.addEventListener("click", () => {
+      showSlide(currentSlide + 1);
+    });
+  }
+
+  dots.forEach((dot, index) => {
+    dot.addEventListener("click", () => {
+      showSlide(index);
+    });
+  });
+
+  slider.addEventListener("mouseenter", stopAutoSlide);
+  slider.addEventListener("mouseleave", startAutoSlide);
+  slider.addEventListener("focusin", stopAutoSlide);
+
+  slider.addEventListener("focusout", (event) => {
+    if (
+      !(event.relatedTarget instanceof Node) ||
+      !slider.contains(event.relatedTarget)
+    ) {
+      startAutoSlide();
+    }
+  });
+
+  document.addEventListener("visibilitychange", () => {
+    if (document.hidden) {
+      stopAutoSlide();
+    } else {
+      startAutoSlide();
+    }
+  });
+
+  const handleScreenChange = () => {
+    showSlide(currentSlide, false);
+    startAutoSlide();
+  };
+
+  if (typeof mobileScreen.addEventListener === "function") {
+    mobileScreen.addEventListener("change", handleScreenChange);
+    reducedMotion.addEventListener("change", handleScreenChange);
+  } else {
+    mobileScreen.addListener(handleScreenChange);
+    reducedMotion.addListener(handleScreenChange);
+  }
+
+  showSlide(0, false);
+  startAutoSlide();
+})();
