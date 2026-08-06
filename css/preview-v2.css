@@ -1437,242 +1437,256 @@ address {
 }
 
 /* ==========================================================
-   CAROUSEL KEUNGGULAN
-   HP: satu kartu bergantian
-   Desktop: tiga kartu berjajar
+   CAROUSEL KEUNGGULAN HERO
+   - Desktop/tablet: tiga kartu tetap berjajar di kolom kiri hero.
+   - HP <= 640px: satu kartu di tengah, panah, titik, dan auto-slide.
    ========================================================== */
 
-.benefit-slider {
-  position: relative;
-  width: 100%;
-  max-width: 25rem;
-  margin-inline: auto;
+.visually-hidden {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
 }
 
-.benefit-slider__stage {
-  display: grid;
-  grid-template-columns: 2.5rem minmax(0, 20rem) 2.5rem;
-  align-items: center;
-  justify-content: center;
-  gap: 0.55rem;
-}
-
-.benefit-slider__viewport {
+.benefit-carousel {
   width: 100%;
   min-width: 0;
-  overflow: hidden;
-  border-radius: 1.5rem;
+  margin-top: 34px;
 }
 
-.benefit-slider__track {
-  display: grid;
-  gap: 1rem;
-}
-
-.js-enabled .benefit-slider__track {
-  display: flex;
-  gap: 0;
-  transition: transform 450ms ease;
-  will-change: transform;
-}
-
-.benefit-slide {
-  position: relative;
-  display: flex;
+.benefit-carousel__stage,
+.benefit-carousel__viewport,
+.benefit-carousel__track {
   min-width: 0;
-  min-height: 12rem;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding: 1.6rem 1.25rem;
-  overflow: hidden;
-  color: #0f172a;
-  text-align: center;
-  background:
-    radial-gradient(
-      circle at 100% 0%,
-      rgba(37, 99, 235, 0.12),
-      transparent 42%
-    ),
-    #ffffff;
-  border: 1px solid #d8e4f4;
-  border-radius: 1.5rem;
-  box-shadow: 0 14px 35px rgba(15, 23, 42, 0.08);
 }
 
-.js-enabled .benefit-slide {
+.benefit-carousel__stage {
+  position: relative;
+}
+
+.benefit-carousel__viewport {
   width: 100%;
-  flex: 0 0 100%;
 }
 
-.benefit-slide::after {
+.benefit-carousel__track {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.benefit-carousel__slide {
+  position: relative;
+  min-width: 0;
+  padding: 14px 16px;
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.78);
+  border: 1px solid rgba(220, 230, 245, 0.95);
+  border-radius: 16px;
+  box-shadow: 0 12px 28px rgba(37, 99, 235, 0.06);
+}
+
+.benefit-carousel__number,
+.benefit-carousel__slide strong,
+.benefit-carousel__slide p {
+  position: relative;
+  z-index: 1;
+  display: block;
+}
+
+.benefit-carousel__number {
+  margin-bottom: 8px;
+  color: var(--primary);
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+}
+
+.benefit-carousel__slide strong {
+  color: var(--heading);
+  font-family: Manrope, Inter, sans-serif;
+  font-size: 0.98rem;
+  line-height: 1.3;
+}
+
+.benefit-carousel__slide p {
+  margin: 7px 0 0;
+  color: var(--text-muted);
+  font-size: 0.72rem;
+  line-height: 1.55;
+}
+
+.benefit-carousel__slide::after {
   position: absolute;
-  right: -2.2rem;
-  bottom: -2.7rem;
-  width: 7rem;
-  height: 7rem;
-  border: 1.25rem solid rgba(37, 99, 235, 0.05);
+  right: -36px;
+  bottom: -46px;
+  width: 96px;
+  height: 96px;
+  border: 15px solid rgba(37, 99, 235, 0.045);
   border-radius: 50%;
   content: "";
   pointer-events: none;
 }
 
-.benefit-slide__number {
-  display: grid;
-  width: 2.5rem;
-  height: 2.5rem;
-  margin-bottom: 0.9rem;
-  place-items: center;
-  color: #2563eb;
-  background: #eaf2ff;
-  border-radius: 50%;
-  font-size: 0.78rem;
-  font-weight: 800;
-  line-height: 1;
-}
-
-.benefit-slide h3 {
-  position: relative;
-  z-index: 1;
-  margin: 0 0 0.65rem;
-  color: #0f172a;
-  font-size: clamp(1.05rem, 5vw, 1.35rem);
-  line-height: 1.25;
-}
-
-.benefit-slide p {
-  position: relative;
-  z-index: 1;
-  max-width: 27ch;
-  margin: 0;
-  color: #64748b;
-  font-size: 0.88rem;
-  line-height: 1.6;
-}
-
-.benefit-slider__arrow {
+.benefit-carousel__arrow,
+.benefit-carousel__dots {
   display: none;
-  width: 2.5rem;
-  height: 2.5rem;
-  padding: 0;
-  place-items: center;
-  color: #2563eb;
-  background: #ffffff;
-  border: 1px solid #cdddf4;
-  border-radius: 50%;
-  box-shadow: 0 8px 22px rgba(15, 23, 42, 0.1);
-  cursor: pointer;
-  transition:
-    color 180ms ease,
-    background-color 180ms ease,
-    border-color 180ms ease,
-    transform 180ms ease;
 }
 
-.js-enabled .benefit-slider__arrow {
-  display: grid;
-}
-
-.benefit-slider__arrow:hover {
-  color: #ffffff;
-  background: #2563eb;
-  border-color: #2563eb;
-  transform: scale(1.06);
-}
-
-.benefit-slider__arrow:active {
-  transform: scale(0.96);
-}
-
-.benefit-slider__arrow svg {
-  width: 1.25rem;
-  height: 1.25rem;
-  fill: none;
-  stroke: currentColor;
-  stroke-width: 2.2;
-  stroke-linecap: round;
-  stroke-linejoin: round;
-}
-
-.benefit-slider__dots {
-  display: none;
-  align-items: center;
-  justify-content: center;
-  gap: 0.45rem;
-  margin-top: 1rem;
-}
-
-.js-enabled .benefit-slider__dots {
-  display: flex;
-}
-
-.benefit-slider__dots button {
-  width: 0.55rem;
-  height: 0.55rem;
-  padding: 0;
-  background: #bdcce2;
-  border: 0;
-  border-radius: 999px;
-  cursor: pointer;
-  transition:
-    width 250ms ease,
-    background-color 250ms ease,
-    transform 180ms ease;
-}
-
-.benefit-slider__dots button:hover {
-  background: #7894be;
-  transform: scale(1.15);
-}
-
-.benefit-slider__dots button.is-active {
-  width: 1.7rem;
-  background: #2563eb;
-}
-
-/* Desktop: tampilkan ketiga kartu secara berjajar. */
-@media (min-width: 48rem) {
-  .benefit-slider {
-    max-width: 70rem;
+@media (max-width: 640px) {
+  .benefit-carousel {
+    width: min(100%, 31rem);
+    margin: 34px auto 0;
   }
 
-  .benefit-slider__stage {
-    display: block;
-  }
-
-  .benefit-slider__viewport {
-    overflow: visible;
-  }
-
-  .benefit-slider__track,
-  .js-enabled .benefit-slider__track {
+  .benefit-carousel__stage {
     display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 1rem;
-    transform: none !important;
-    transition: none;
+    grid-template-columns: 42px minmax(0, 1fr) 42px;
+    align-items: center;
+    gap: 8px;
   }
 
-  .benefit-slide,
-  .js-enabled .benefit-slide {
-    width: auto;
-    min-height: 13rem;
-    flex: initial;
-    padding: 1.8rem 1.5rem;
+  .benefit-carousel__viewport {
+    overflow: hidden;
+    border-radius: 22px;
   }
 
-  .benefit-slider__arrow,
-  .js-enabled .benefit-slider__arrow,
-  .benefit-slider__dots,
-  .js-enabled .benefit-slider__dots {
-    display: none;
+  .benefit-carousel__track {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .benefit-carousel-ready .benefit-carousel__track {
+    display: flex;
+    gap: 0;
+    transition: transform 420ms ease;
+    will-change: transform;
+  }
+
+  .benefit-carousel__slide {
+    min-height: 164px;
+    padding: 24px 20px;
+    text-align: center;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 22px;
+    box-shadow: 0 16px 36px rgba(37, 99, 235, 0.09);
+  }
+
+  .benefit-carousel-ready .benefit-carousel__slide {
+    width: 100%;
+    flex: 0 0 100%;
+  }
+
+  .benefit-carousel__number {
+    width: fit-content;
+    margin: 0 auto 10px;
+    padding: 5px 9px;
+    background: var(--background-soft);
+    border-radius: 999px;
+    font-size: 0.7rem;
+  }
+
+  .benefit-carousel__slide strong {
+    font-size: 1.15rem;
+  }
+
+  .benefit-carousel__slide p {
+    max-width: 30ch;
+    margin: 8px auto 0;
+    font-size: 0.82rem;
+  }
+
+  .benefit-carousel-ready .benefit-carousel__arrow {
+    display: grid;
+    width: 42px;
+    height: 42px;
+    padding: 0;
+    place-items: center;
+    color: var(--primary);
+    background: #fff;
+    border: 1px solid #cfe0f7;
+    border-radius: 50%;
+    box-shadow: 0 10px 24px rgba(15, 23, 42, 0.09);
+    cursor: pointer;
+    touch-action: manipulation;
+  }
+
+  .benefit-carousel__arrow span {
+    display: block;
+    margin-top: -3px;
+    font-size: 2rem;
+    font-weight: 400;
+    line-height: 1;
+  }
+
+  .benefit-carousel__arrow:hover,
+  .benefit-carousel__arrow:focus-visible {
+    color: #fff;
+    background: var(--primary);
+    border-color: var(--primary);
+  }
+
+  .benefit-carousel__arrow:focus-visible,
+  .benefit-carousel__dots button:focus-visible {
+    outline: 3px solid rgba(37, 99, 235, 0.25);
+    outline-offset: 3px;
+  }
+
+  .benefit-carousel-ready .benefit-carousel__dots {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 7px;
+    margin-top: 14px;
+  }
+
+  .benefit-carousel__dots button {
+    width: 8px;
+    height: 8px;
+    padding: 0;
+    background: #bfd0e7;
+    border: 0;
+    border-radius: 999px;
+    cursor: pointer;
+    transition:
+      width 200ms ease,
+      background-color 200ms ease;
+  }
+
+  .benefit-carousel__dots button.is-active {
+    width: 24px;
+    background: var(--primary);
   }
 }
 
-/* Pengguna yang mengurangi animasi tidak mendapat transisi bergerak. */
+@media (max-width: 360px) {
+  .benefit-carousel__stage {
+    grid-template-columns: 36px minmax(0, 1fr) 36px;
+    gap: 6px;
+  }
+
+  .benefit-carousel-ready .benefit-carousel__arrow {
+    width: 36px;
+    height: 36px;
+  }
+
+  .benefit-carousel__arrow span {
+    font-size: 1.7rem;
+  }
+
+  .benefit-carousel__slide {
+    min-height: 174px;
+    padding-inline: 16px;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
-  .benefit-slider__track,
-  .js-enabled .benefit-slider__track {
+  .benefit-carousel-ready .benefit-carousel__track {
     transition: none;
   }
 }
