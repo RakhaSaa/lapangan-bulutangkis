@@ -145,21 +145,89 @@
               </a>
             </div>
 
-            <div class="hero-trust" aria-label="Keunggulan GOR MENTENG 6">
-              <article>
-                <strong>5 Lapangan Tersedia</strong>
-                <span>Lebih banyak pilihan untuk waktu bermain Anda.</span>
-              </article>
+            <div
+              class="benefit-carousel"
+              data-benefit-carousel
+              aria-label="Keunggulan GOR MENTENG 6"
+              aria-roledescription="carousel"
+            >
+              <div class="benefit-carousel__stage">
+                <button
+                  class="benefit-carousel__arrow benefit-carousel__arrow--prev"
+                  type="button"
+                  data-benefit-prev
+                  aria-label="Lihat keunggulan sebelumnya"
+                >
+                  <span aria-hidden="true">‹</span>
+                </button>
 
-              <article>
-                <strong>Rp35.000 per Jam</strong>
-                <span>Nikmati fasilitas olahraga dengan harga terjangkau.</span>
-              </article>
+                <div class="benefit-carousel__viewport" data-benefit-viewport>
+                  <div class="benefit-carousel__track" data-benefit-track>
+                    <article
+                      class="benefit-carousel__slide is-active"
+                      data-benefit-slide
+                      aria-hidden="false"
+                    >
+                      <span class="benefit-carousel__number" aria-hidden="true">01</span>
+                      <strong>5 Lapangan Tersedia</strong>
+                      <p>Lebih banyak pilihan untuk waktu bermain Anda.</p>
+                    </article>
 
-              <article>
-                <strong>Booking Tanpa DP</strong>
-                <span>Reservasi sekarang, bayar langsung di lokasi.</span>
-              </article>
+                    <article
+                      class="benefit-carousel__slide"
+                      data-benefit-slide
+                      aria-hidden="true"
+                    >
+                      <span class="benefit-carousel__number" aria-hidden="true">02</span>
+                      <strong>Rp35.000 per Jam</strong>
+                      <p>Nikmati fasilitas olahraga dengan harga terjangkau.</p>
+                    </article>
+
+                    <article
+                      class="benefit-carousel__slide"
+                      data-benefit-slide
+                      aria-hidden="true"
+                    >
+                      <span class="benefit-carousel__number" aria-hidden="true">03</span>
+                      <strong>Booking Tanpa DP</strong>
+                      <p>Reservasi sekarang, bayar langsung di lokasi.</p>
+                    </article>
+                  </div>
+                </div>
+
+                <button
+                  class="benefit-carousel__arrow benefit-carousel__arrow--next"
+                  type="button"
+                  data-benefit-next
+                  aria-label="Lihat keunggulan berikutnya"
+                >
+                  <span aria-hidden="true">›</span>
+                </button>
+              </div>
+
+              <div class="benefit-carousel__dots" aria-label="Pilih keunggulan">
+                <button
+                  class="is-active"
+                  type="button"
+                  data-benefit-dot
+                  aria-label="Tampilkan 5 Lapangan Tersedia"
+                  aria-current="true"
+                ></button>
+                <button
+                  type="button"
+                  data-benefit-dot
+                  aria-label="Tampilkan Rp35.000 per Jam"
+                  aria-current="false"
+                ></button>
+                <button
+                  type="button"
+                  data-benefit-dot
+                  aria-label="Tampilkan Booking Tanpa DP"
+                  aria-current="false"
+                ></button>
+              </div>
+
+              <p class="visually-hidden" data-benefit-status aria-live="polite"></p>
             </div>
           </div>
 
