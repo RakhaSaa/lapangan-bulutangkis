@@ -1435,3 +1435,244 @@ address {
     animation-iteration-count: 1 !important;
   }
 }
+
+/* ==========================================================
+   CAROUSEL KEUNGGULAN
+   HP: satu kartu bergantian
+   Desktop: tiga kartu berjajar
+   ========================================================== */
+
+.benefit-slider {
+  position: relative;
+  width: 100%;
+  max-width: 25rem;
+  margin-inline: auto;
+}
+
+.benefit-slider__stage {
+  display: grid;
+  grid-template-columns: 2.5rem minmax(0, 20rem) 2.5rem;
+  align-items: center;
+  justify-content: center;
+  gap: 0.55rem;
+}
+
+.benefit-slider__viewport {
+  width: 100%;
+  min-width: 0;
+  overflow: hidden;
+  border-radius: 1.5rem;
+}
+
+.benefit-slider__track {
+  display: grid;
+  gap: 1rem;
+}
+
+.js-enabled .benefit-slider__track {
+  display: flex;
+  gap: 0;
+  transition: transform 450ms ease;
+  will-change: transform;
+}
+
+.benefit-slide {
+  position: relative;
+  display: flex;
+  min-width: 0;
+  min-height: 12rem;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 1.6rem 1.25rem;
+  overflow: hidden;
+  color: #0f172a;
+  text-align: center;
+  background:
+    radial-gradient(
+      circle at 100% 0%,
+      rgba(37, 99, 235, 0.12),
+      transparent 42%
+    ),
+    #ffffff;
+  border: 1px solid #d8e4f4;
+  border-radius: 1.5rem;
+  box-shadow: 0 14px 35px rgba(15, 23, 42, 0.08);
+}
+
+.js-enabled .benefit-slide {
+  width: 100%;
+  flex: 0 0 100%;
+}
+
+.benefit-slide::after {
+  position: absolute;
+  right: -2.2rem;
+  bottom: -2.7rem;
+  width: 7rem;
+  height: 7rem;
+  border: 1.25rem solid rgba(37, 99, 235, 0.05);
+  border-radius: 50%;
+  content: "";
+  pointer-events: none;
+}
+
+.benefit-slide__number {
+  display: grid;
+  width: 2.5rem;
+  height: 2.5rem;
+  margin-bottom: 0.9rem;
+  place-items: center;
+  color: #2563eb;
+  background: #eaf2ff;
+  border-radius: 50%;
+  font-size: 0.78rem;
+  font-weight: 800;
+  line-height: 1;
+}
+
+.benefit-slide h3 {
+  position: relative;
+  z-index: 1;
+  margin: 0 0 0.65rem;
+  color: #0f172a;
+  font-size: clamp(1.05rem, 5vw, 1.35rem);
+  line-height: 1.25;
+}
+
+.benefit-slide p {
+  position: relative;
+  z-index: 1;
+  max-width: 27ch;
+  margin: 0;
+  color: #64748b;
+  font-size: 0.88rem;
+  line-height: 1.6;
+}
+
+.benefit-slider__arrow {
+  display: none;
+  width: 2.5rem;
+  height: 2.5rem;
+  padding: 0;
+  place-items: center;
+  color: #2563eb;
+  background: #ffffff;
+  border: 1px solid #cdddf4;
+  border-radius: 50%;
+  box-shadow: 0 8px 22px rgba(15, 23, 42, 0.1);
+  cursor: pointer;
+  transition:
+    color 180ms ease,
+    background-color 180ms ease,
+    border-color 180ms ease,
+    transform 180ms ease;
+}
+
+.js-enabled .benefit-slider__arrow {
+  display: grid;
+}
+
+.benefit-slider__arrow:hover {
+  color: #ffffff;
+  background: #2563eb;
+  border-color: #2563eb;
+  transform: scale(1.06);
+}
+
+.benefit-slider__arrow:active {
+  transform: scale(0.96);
+}
+
+.benefit-slider__arrow svg {
+  width: 1.25rem;
+  height: 1.25rem;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2.2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.benefit-slider__dots {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  gap: 0.45rem;
+  margin-top: 1rem;
+}
+
+.js-enabled .benefit-slider__dots {
+  display: flex;
+}
+
+.benefit-slider__dots button {
+  width: 0.55rem;
+  height: 0.55rem;
+  padding: 0;
+  background: #bdcce2;
+  border: 0;
+  border-radius: 999px;
+  cursor: pointer;
+  transition:
+    width 250ms ease,
+    background-color 250ms ease,
+    transform 180ms ease;
+}
+
+.benefit-slider__dots button:hover {
+  background: #7894be;
+  transform: scale(1.15);
+}
+
+.benefit-slider__dots button.is-active {
+  width: 1.7rem;
+  background: #2563eb;
+}
+
+/* Desktop: tampilkan ketiga kartu secara berjajar. */
+@media (min-width: 48rem) {
+  .benefit-slider {
+    max-width: 70rem;
+  }
+
+  .benefit-slider__stage {
+    display: block;
+  }
+
+  .benefit-slider__viewport {
+    overflow: visible;
+  }
+
+  .benefit-slider__track,
+  .js-enabled .benefit-slider__track {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1rem;
+    transform: none !important;
+    transition: none;
+  }
+
+  .benefit-slide,
+  .js-enabled .benefit-slide {
+    width: auto;
+    min-height: 13rem;
+    flex: initial;
+    padding: 1.8rem 1.5rem;
+  }
+
+  .benefit-slider__arrow,
+  .js-enabled .benefit-slider__arrow,
+  .benefit-slider__dots,
+  .js-enabled .benefit-slider__dots {
+    display: none;
+  }
+}
+
+/* Pengguna yang mengurangi animasi tidak mendapat transisi bergerak. */
+@media (prefers-reduced-motion: reduce) {
+  .benefit-slider__track,
+  .js-enabled .benefit-slider__track {
+    transition: none;
+  }
+}
