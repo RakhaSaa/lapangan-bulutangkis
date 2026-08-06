@@ -401,19 +401,22 @@ address {
 
 .hero-image-badge {
   position: absolute;
-  right: 20px;
+  right: auto;
   bottom: 20px;
   left: 20px;
   z-index: 2;
   display: flex;
   align-items: center;
   gap: 10px;
+  width: fit-content;
+  max-width: calc(100% - 40px);
   padding: 13px 15px;
-  color: #fff;
-  background: rgba(15, 23, 42, 0.72);
-  border: 1px solid rgba(255, 255, 255, 0.16);
+  color: var(--heading);
+  background: rgba(255, 255, 255, 0.94);
+  border: 1px solid rgba(220, 230, 245, 0.98);
   border-radius: 14px;
-  backdrop-filter: blur(10px);
+  box-shadow: 0 14px 30px rgba(15, 23, 42, 0.16);
+  backdrop-filter: blur(12px);
   font-size: 0.85rem;
   font-weight: 700;
 }
@@ -460,33 +463,9 @@ address {
   font-size: 1.08rem;
 }
 
-.floating-card-rating {
-  right: -4px;
-  bottom: 40px;
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
 
-.floating-card-rating > span {
-  display: grid;
-  place-items: center;
-  width: 36px;
-  height: 36px;
-  color: #fff;
-  background: var(--primary);
-  border-radius: 11px;
-}
 
-.floating-card-rating strong {
-  color: var(--heading);
-  font-size: 0.85rem;
-}
 
-.floating-card-rating small {
-  color: var(--text-muted);
-  font-size: 0.68rem;
-}
 
 .quick-strip {
   position: relative;
@@ -1313,11 +1292,6 @@ address {
   .floating-card-price {
     top: -16px;
     left: 10px;
-  }
-
-  .floating-card-rating {
-    right: 10px;
-    bottom: 16px;
   }
 
   .quick-strip {
