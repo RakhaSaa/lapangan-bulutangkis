@@ -223,176 +223,174 @@ function updateCurrentYear() {
 }
 
 /* ==========================================================
-   CAROUSEL KEUNGGULAN
-   - Berganti otomatis setiap 4,5 detik pada layar HP
-   - Dapat dikontrol dengan tombol panah dan indikator
-   - Pada desktop, ketiga kartu tampil bersamaan
+   CAROUSEL KEUNGGULAN HERO
+   Aktif hanya pada layar HP (maksimal 640px).
    ========================================================== */
 
-(() => {
-  document.documentElement.classList.add("js-enabled");
+(function initializeBenefitCarousel() {
+  const carousel = document.querySelector("[data-benefit-carousel]");
 
-  const slider = document.querySelector("[data-benefit-slider]");
-
-  if (!slider) {
+  if (!carousel) {
     return;
   }
 
-  const track = slider.querySelector("[data-benefit-track]");
+  const track = carousel.querySelector("[data-benefit-track]");
+  const viewport = carousel.querySelector("[data-benefit-viewport]");
   const slides = Array.from(
-    slider.querySelectorAll("[data-benefit-slide]")
+    carousel.querySelectorAll("[data-benefit-slide]")
   );
   const dots = Array.from(
-    slider.querySelectorAll("[data-benefit-dot]")
+    carousel.querySelectorAll("[data-benefit-dot]")
   );
-  const previousButton = slider.querySelector("[data-benefit-prev]");
-  const nextButton = slider.querySelector("[data-benefit-next]");
+  const previousButton = carousel.querySelector("[data-benefit-prev]");
+  const nextButton = carousel.querySelector("[data-benefit-next]");
+  const status = carousel.querySelector("[data-benefit-status]");
 
-  if (
-    !track ||
-    slides.length === 0 ||
-    dots.length !== slides.length
-  ) {
+  if (!track || !viewport || slides.length === 0) {
     return;
   }
 
-  const mobileScreen = window.matchMedia("(max-width: 47.99rem)");
-  const reducedMotion = window.matchMedia(
+  document.documentElement.classList.add("benefit-carousel-ready");
+
+  const mobileQuery = window.matchMedia("(max-width: 640px)");
+  const reducedMotionQuery = window.matchMedia(
     "(prefers-reduced-motion: reduce)"
   );
 
-  let currentSlide = 0;
-  let autoSlideTimer = null;
+  let currentIndex = 0;
+  let timerId = null;
+  let pointerStartX = null;
 
-  /**
-   * Menghentikan perpindahan otomatis.
-   */
-  const stopAutoSlide = () => {
-    if (autoSlideTimer !== null) {
-      window.clearInterval(autoSlideTimer);
-      autoSlideTimer = null;
+  function normalizeIndex(index) {
+    return (index + slides.length) % slides.length;
+  }
+
+  function stopAutoSlide() {
+    if (timerId !== null) {
+      window.clearTimeout(timerId);
+      timerId = null;
     }
-  };
+  }
 
-  /**
-   * Memulai perpindahan otomatis hanya pada layar HP.
-   */
-  const startAutoSlide = () => {
+  function scheduleAutoSlide() {
     stopAutoSlide();
 
     if (
-      !mobileScreen.matches ||
-      reducedMotion.matches ||
-      slider.matches(":hover") ||
-      slider.contains(document.activeElement) ||
+      !mobileQuery.matches ||
+      reducedMotionQuery.matches ||
       document.hidden
     ) {
       return;
     }
 
-    autoSlideTimer = window.setInterval(() => {
-      showSlide(currentSlide + 1, false);
+    timerId = window.setTimeout(function () {
+      showSlide(currentIndex + 1, false);
+      scheduleAutoSlide();
     }, 4500);
-  };
+  }
 
-  /**
-   * Menampilkan slide berdasarkan nomor urutan.
-   *
-   * @param {number} requestedSlide Nomor slide yang ingin ditampilkan.
-   * @param {boolean} restartTimer Apakah timer perlu dimulai ulang.
-   */
-  const showSlide = (requestedSlide, restartTimer = true) => {
-    currentSlide =
-      (requestedSlide + slides.length) % slides.length;
+  function updateAccessibility() {
+    slides.forEach(function (slide, index) {
+      const isCurrent = index === currentIndex;
 
-    if (mobileScreen.matches) {
-      track.style.transform =
-        `translateX(-${currentSlide * 100}%)`;
+      slide.classList.toggle("is-active", isCurrent);
+      slide.setAttribute(
+        "aria-hidden",
+        mobileQuery.matches && !isCurrent ? "true" : "false"
+      );
+    });
+
+    dots.forEach(function (dot, index) {
+      const isCurrent = index === currentIndex;
+
+      dot.classList.toggle("is-active", isCurrent);
+      dot.setAttribute("aria-current", isCurrent ? "true" : "false");
+    });
+
+    if (status && mobileQuery.matches) {
+      const title = slides[currentIndex].querySelector("strong")?.textContent;
+      status.textContent = `Keunggulan ${currentIndex + 1} dari ${slides.length}: ${title || ""}`;
+    }
+  }
+
+  function showSlide(index, restartTimer = true) {
+    currentIndex = normalizeIndex(index);
+
+    if (mobileQuery.matches) {
+      track.style.transform = `translateX(-${currentIndex * 100}%)`;
     } else {
       track.style.transform = "";
     }
 
-    slides.forEach((slide, index) => {
-      const isCurrentSlide = index === currentSlide;
-
-      slide.classList.toggle("is-active", isCurrentSlide);
-
-      slide.setAttribute(
-        "aria-hidden",
-        mobileScreen.matches && !isCurrentSlide
-          ? "true"
-          : "false"
-      );
-    });
-
-    dots.forEach((dot, index) => {
-      const isCurrentDot = index === currentSlide;
-
-      dot.classList.toggle("is-active", isCurrentDot);
-
-      dot.setAttribute(
-        "aria-current",
-        isCurrentDot ? "true" : "false"
-      );
-    });
+    updateAccessibility();
 
     if (restartTimer) {
-      startAutoSlide();
+      scheduleAutoSlide();
     }
-  };
-
-  if (previousButton) {
-    previousButton.addEventListener("click", () => {
-      showSlide(currentSlide - 1);
-    });
   }
 
-  if (nextButton) {
-    nextButton.addEventListener("click", () => {
-      showSlide(currentSlide + 1);
-    });
-  }
+  previousButton?.addEventListener("click", function () {
+    showSlide(currentIndex - 1);
+  });
 
-  dots.forEach((dot, index) => {
-    dot.addEventListener("click", () => {
+  nextButton?.addEventListener("click", function () {
+    showSlide(currentIndex + 1);
+  });
+
+  dots.forEach(function (dot, index) {
+    dot.addEventListener("click", function () {
       showSlide(index);
     });
   });
 
-  slider.addEventListener("mouseenter", stopAutoSlide);
-  slider.addEventListener("mouseleave", startAutoSlide);
-  slider.addEventListener("focusin", stopAutoSlide);
-
-  slider.addEventListener("focusout", (event) => {
-    if (
-      !(event.relatedTarget instanceof Node) ||
-      !slider.contains(event.relatedTarget)
-    ) {
-      startAutoSlide();
+  viewport.addEventListener("pointerdown", function (event) {
+    if (!mobileQuery.matches || !event.isPrimary) {
+      return;
     }
+
+    pointerStartX = event.clientX;
   });
 
-  document.addEventListener("visibilitychange", () => {
+  viewport.addEventListener("pointerup", function (event) {
+    if (pointerStartX === null || !mobileQuery.matches) {
+      return;
+    }
+
+    const distance = event.clientX - pointerStartX;
+    pointerStartX = null;
+
+    if (Math.abs(distance) < 45) {
+      return;
+    }
+
+    showSlide(distance < 0 ? currentIndex + 1 : currentIndex - 1);
+  });
+
+  viewport.addEventListener("pointercancel", function () {
+    pointerStartX = null;
+  });
+
+  document.addEventListener("visibilitychange", function () {
     if (document.hidden) {
       stopAutoSlide();
     } else {
-      startAutoSlide();
+      scheduleAutoSlide();
     }
   });
 
-  const handleScreenChange = () => {
-    showSlide(currentSlide, false);
-    startAutoSlide();
-  };
+  function handleResponsiveChange() {
+    showSlide(currentIndex, false);
+    scheduleAutoSlide();
+  }
 
-  if (typeof mobileScreen.addEventListener === "function") {
-    mobileScreen.addEventListener("change", handleScreenChange);
-    reducedMotion.addEventListener("change", handleScreenChange);
+  if (typeof mobileQuery.addEventListener === "function") {
+    mobileQuery.addEventListener("change", handleResponsiveChange);
+    reducedMotionQuery.addEventListener("change", handleResponsiveChange);
   } else {
-    mobileScreen.addListener(handleScreenChange);
-    reducedMotion.addListener(handleScreenChange);
+    mobileQuery.addListener(handleResponsiveChange);
+    reducedMotionQuery.addListener(handleResponsiveChange);
   }
 
   showSlide(0, false);
-  startAutoSlide();
+  scheduleAutoSlide();
 })();
